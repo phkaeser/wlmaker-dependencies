@@ -1,0 +1,35 @@
+[submodule "wlroots"]
+        path = wlroots
+        url = https://gitlab.freedesktop.org/wlroots/wlroots.git
+        branch = main
+        update = rebase
+[submodule "libdisplay-info"]
+        path = libdisplay-info
+        url = https://gitlab.freedesktop.org/emersion/libdisplay-info.git
+        branch = main
+        update = rebase
+[submodule "hwdata"]
+        path = hwdata
+        url = https://github.com/vcrhonek/hwdata.git
+        branch = main
+        update = rebase
+[submodule "wayland-protocols"]
+        path = wayland-protocols
+        url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+        branch = main
+        update = rebase
+[submodule "pixman"]
+        path = pixman
+        url = https://gitlab.freedesktop.org/pixman/pixman.git
+        branch = main
+        update = rebase
+[submodule "drm"]
+        path = drm
+        url = https://gitlab.freedesktop.org/mesa/drm.git
+        branch = main
+        update = rebase
+[submodule "wayland"]
+        path = wayland
+        url = https://gitlab.freedesktop.org/wayland/wayland.git
+        branch = main
+        update = rebase
