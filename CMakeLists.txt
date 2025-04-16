@@ -74,7 +74,7 @@ ExternalProject_Add(wayland_protocols
 ExternalProject_Add(hwdata
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/hwdata"
   INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
-  CONFIGURE_COMMAND ./configure --prefix=<INSTALL_DIR> --datadir=<INSTALL_DIR>/share --datarootdir=<INSTALLDIR>/share
+  CONFIGURE_COMMAND ./configure --prefix=<INSTALL_DIR> --datadir=<INSTALL_DIR>/share --datarootdir=<INSTALL_DIR>/share
   BUILD_COMMAND make
   INSTALL_COMMAND make install
   BUILD_IN_SOURCE 1
@@ -87,6 +87,14 @@ ExternalProject_Add(libdisplay_info
   BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
   INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
   DEPENDS hwdata
+)
+
+ExternalProject_Add(libbacktrace
+  SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libbacktrace"
+  INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
+  CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR> --datadir=<INSTALL_DIR>/share --datarootdir=<INSTALL_DIR>/share
+  BUILD_COMMAND make
+  INSTALL_COMMAND make install
 )
 
 # XWayland as optional dependency, configure wlroots accordingly.
