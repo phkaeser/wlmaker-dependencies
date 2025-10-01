@@ -34,6 +34,9 @@ FIND_PACKAGE(PkgConfig REQUIRED)
 # Update: git submodule update --remote --merge
 # Update: (cd libbase && git pull)
 # ADD_SUBDIRECTORY(libbase)
+#
+# git submodule add <repository>
+# cd <repository> && git checkout <tag>
 
 # wlroots -- build and configure from the git submodule.
 # Note: This will *NOT* automatically install the library.
@@ -55,10 +58,31 @@ ELSE(XWAYLAND_FOUND)
   SET(WLROOTS_XWAYLAND  "-Dxwayland=disabled")
 ENDIF(XWAYLAND_FOUND)
 
+# Wayland 1.24 needed for wlroots approaching 0.20.
+# Note: Also needs packages: xsltproc xmlto libxcb-xkb-dev
+ExternalProject_Add(wayland
+  SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/wayland"
+  INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
+  CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR>
+  BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
+  INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
+)
+
+# Note: bach-completion appears to desire installation into
+# a directory outside of --prefix. It can be disabled.
+ExternalProject_Add(libxkbcommon
+  SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxkbcommon"
+  INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
+  CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR> -Denable-bash-completion=false
+  BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
+  INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
+)
+# wlroots, at head.
 ExternalProject_Add(wlroots
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/wlroots"
   INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
   CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR> -Dexamples=true -Dbackends=drm,libinput,x11 ${WLROOTS_XWAYLAND}
   BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
   INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
+  DEPENDS wayland libxkbcommon
 )
