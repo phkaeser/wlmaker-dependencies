@@ -6,3 +6,18 @@
 [submodule "libbacktrace"]
 	path = libbacktrace
 	url = https://github.com/ianlancetaylor/libbacktrace.git
+[submodule "wayland"]
+	path = wayland
+	url = https://gitlab.freedesktop.org/wayland/wayland.git
+[submodule "libdrm"]
+	path = libdrm
+	url = https://gitlab.freedesktop.org/mesa/libdrm.git
+[submodule "libxkbcommon"]
+	path = libxkbcommon
+	url = https://github.com/xkbcommon/libxkbcommon.git
+[submodule "wayland-protocols"]
+	path = wayland-protocols
+	url = https://gitlab.freedesktop.org/wayland/wayland-protocols.git
+[submodule "pixman"]
+	path = pixman
+	url = https://gitlab.freedesktop.org/pixman/pixman.git
