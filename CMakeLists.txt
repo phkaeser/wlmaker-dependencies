@@ -39,7 +39,7 @@ FIND_PACKAGE(PkgConfig REQUIRED)
 # Note: This will *NOT* automatically install the library.
 INCLUDE(ExternalProject)
 
-ExternalProject_Add(libbacktrace
+ExternalProject_Add(dep-libbacktrace
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libbacktrace"
   INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
   CONFIGURE_COMMAND <SOURCE_DIR>/configure --prefix=<INSTALL_DIR> --datadir=<INSTALL_DIR>/share --datarootdir=<INSTALL_DIR>/share
