@@ -102,6 +102,7 @@ ELSE(XWAYLAND_FOUND)
   SET(WLROOTS_XWAYLAND  "-Dxwayland=disabled")
 ENDIF(XWAYLAND_FOUND)
 
+# wlroots - 0.20.0
 ExternalProject_Add(wlroots
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/wlroots"
   INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
