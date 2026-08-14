@@ -110,4 +110,5 @@ ExternalProject_Add(wlroots
   CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR> -Dexamples=true -Dbackends=drm,libinput,x11 ${WLROOTS_XWAYLAND}
   BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
   INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
+  DEPENDS libdrm wayland pixman wayland-protocols
 )
