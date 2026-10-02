@@ -72,7 +72,7 @@ ExternalProject_Add(libdrm
 ExternalProject_Add(libxkbcommon
   SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libxkbcommon"
   INSTALL_DIR ${CMAKE_INSTALL_PREFIX}
-  CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR> -Denable-bash-completion=false
+  CONFIGURE_COMMAND ${MESON_EXECUTABLE} --prefix=<INSTALL_DIR> <BINARY_DIR> <SOURCE_DIR> -Dx-locale-root=/usr/share/X11/locale -Denable-bash-completion=false
   BUILD_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR>
   INSTALL_COMMAND ${NINJA_EXECUTABLE} -C <BINARY_DIR> install
 )
